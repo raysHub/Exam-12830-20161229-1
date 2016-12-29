@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ray.Exam_12830_20161229_1.dao.FilmDao">
+    <!-- insert a Film -->
+    <insert id="insert" parameterType="Film" >
+        INSERT INTO
+             film(title,description,language_id) 
+        VALUE
+            (#{title},#{description},#{languageId})
+    </insert>
+</mapper>
