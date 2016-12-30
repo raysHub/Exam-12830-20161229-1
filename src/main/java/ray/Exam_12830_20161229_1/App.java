@@ -1,5 +1,6 @@
 package ray.Exam_12830_20161229_1;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import org.springframework.context.ConfigurableApplicationContext;
@@ -30,15 +31,25 @@ public class App {
         while (true) {
             System.out.println("请输入语言 ID(language_id):");
             // 第三次输入的一行字符串set成lnguageId
-            film.setLanguageId(sc.nextInt());
-            // 把打包好的dto传入到service里面去
+            int id = 0;
+            try {
+                @SuppressWarnings("resource")
+                Scanner scc = new Scanner(System.in);
+                id = scc.nextInt();
+                // 把打包好的dto传入到service里面去
+            } catch (InputMismatchException e) {
+                System.out.println("ID输入格式错误，请重新输入");
+                continue;
+            } finally {
+            }
+            film.setLanguageId(id);
             if (service.insertFilm(film)) {
                 break;
             }
             System.out.println("ID不存在，请重新输入");
         }
-        cac.stop();
         // 执行cac的stop事件
+        cac.stop();
         try {
             if (sc != null) {
                 sc.close();

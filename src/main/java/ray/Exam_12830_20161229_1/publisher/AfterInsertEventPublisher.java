@@ -4,10 +4,10 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.stereotype.Component;
 
-import ray.Exam_12830_20161229_1.event.InsertEvent;
+import ray.Exam_12830_20161229_1.event.AfterInsertEvent;
 
 @Component
-public class InsertEventPublisher implements ApplicationEventPublisherAware {
+public class AfterInsertEventPublisher implements ApplicationEventPublisherAware {
 
     private ApplicationEventPublisher publisher;
 
@@ -17,9 +17,7 @@ public class InsertEventPublisher implements ApplicationEventPublisherAware {
     }
 
     public void publish() {
-        InsertEvent event = new InsertEvent(this);
-        // transmit message here
-        event.setMessage("My event published");
+        AfterInsertEvent event = new AfterInsertEvent(this);
         publisher.publishEvent(event);
     }
 
